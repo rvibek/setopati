@@ -1,17 +1,16 @@
 import lxml.html
 import csv
-#import requests
 from lxml import etree
-
+import time
 
 url = 'http://www.setopati.com/?home=true'
 
 parseURL = etree.HTMLParser(encoding='utf-8')
 html =etree.parse(url, parseURL)
 
+fadd = time.strftime('%Y%m%d')
 
-
-f = open('setopati.csv', 'w')
+f = open('setopati_sm_'+str(fadd)+'.csv', 'w')
 writer = csv.writer(f)
 
 i = 1
@@ -24,7 +23,6 @@ while 1:
         break
     else:
         i += 1
-       # sheet.append(twit)
 
         if media[0] == 'fb_title fb_icon':
             media = 'facebook'
